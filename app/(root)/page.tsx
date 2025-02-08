@@ -6,8 +6,9 @@ import { STARTUP_QUERY } from "@/sanity/lib/queries";
 export default async function Home({searchParams}: {searchParams: Promise<{query?: string}>}) {
 
   const query = (await searchParams).query;
+  const params = {search: query || null} 
 
-  const {data: posts} = await sanityFetch({ query: STARTUP_QUERY })
+  const {data: posts} = await sanityFetch({ query: STARTUP_QUERY, params })
 
   return (
     <>
@@ -22,7 +23,7 @@ export default async function Home({searchParams}: {searchParams: Promise<{query
         {query? `Search results for ${query}` : "All Startups"} 
       </p>
 
-      <ul className="card-grid">
+      <ul className="card_grid">
         {posts.length > 0 ? posts.map((post : StartupTypeCard) => 
         (<StartupCard key={post?._id} post={post}/>)) : <p className="no-results">No startups found</p>} 
       </ul>
