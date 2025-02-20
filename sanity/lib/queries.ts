@@ -57,3 +57,34 @@ defineQuery(`*[_type == "author" && id == $id] [0] {
   name,
   username
 }`)
+
+export const AUHTOR_BY_ID_QUERY = 
+defineQuery(`*[_type == "author" && _id == $id] [0] {
+
+  _id,
+  id,
+  bio,
+  image,
+  name,
+  username
+}`)
+
+export const STARTUPs_BY_AUTHOR_QUERY = 
+defineQuery(`*[_type == "startup" && author._ref == $id] | order(_createdAt desc) {
+  _id,
+  _createdAt,
+  slug,
+  author -> {
+    _id,
+    bio,
+    image,
+    name
+  },
+  views,
+  title,
+  pitch,
+  image,
+  category,
+  description
+}`
+)
