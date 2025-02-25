@@ -2,7 +2,8 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { auth, signIn, signOut } from "@/auth";
-import { BadgePlus, LogOut } from "lucide-react";
+import { AiOutlinePlus } from "react-icons/ai";
+import { IoLogOutOutline } from "react-icons/io5";
 import { Avatar, AvatarImage } from "./ui/avatar";
 
 const Navbar = async () => {
@@ -20,7 +21,7 @@ const Navbar = async () => {
               <>
                 <Link href="/startup/create">
                   <span className="max-sm:hidden">Create</span>
-                  <BadgePlus className="sm:hidden size-6" />
+                  <AiOutlinePlus className="sm:hidden size-6" />
                 </Link>
 
                 <form
@@ -31,7 +32,7 @@ const Navbar = async () => {
                 >
                   <button type="submit">
                     <span className="max-sm:hidden">Logout</span>
-                    <LogOut className="sm:hidden size-6 text-red-500" />
+                    <IoLogOutOutline className="sm:hidden size-6 text-red-500" />
                   </button>
                 </form>
 
