@@ -5,17 +5,15 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import MDEditor from "@uiw/react-md-editor";
 import { Button } from "@/components/ui/button";
-import { Send } from "lucide-react";
+import { BsSend } from "react-icons/bs";
 import { formSchema } from "@/lib/validations";
 import { z } from "zod";
-import { useToast } from "@/hooks/use-toast";
 import { useRouter } from "next/navigation";
 import { createPitch } from "@/lib/actions";
 
 const StartupForm = () => {
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [pitch, setPitch] = useState("");
-  const { toast } = useToast();
   const router = useRouter();
   
 
@@ -34,10 +32,11 @@ const StartupForm = () => {
       const result = await createPitch(prevState, formData, pitch);
 
       if (result.status == "SUCCESS") {
-        toast({
-          title: "Success",
-          description: "Your startup pitch has been created successfully",
-        });
+        // toast({
+        //   title: "Success",
+        //   description: "Your startup pitch has been created successfully",
+        // });
+        alert("Your startup pitch has been created successfully");
 
         router.push(`/startup/${result._id}`);
       }
@@ -49,20 +48,22 @@ const StartupForm = () => {
 
         setErrors(fieldErorrs as unknown as Record<string, string>);
 
-        toast({
-          title: "Error",
-          description: "Please check your inputs and try again",
-          variant: "destructive",
-        });
+        // toast({
+        //   title: "Error",
+        //   description: "Please check your inputs and try again",
+        //   variant: "destructive",
+        // });
+        alert("Please check your inputs and try again");
 
         return { ...prevState, error: "Validation failed", status: "ERROR" };
       }
 
-      toast({
-        title: "Error",
-        description: "An unexpected error has occurred",
-        variant: "destructive",
-      });
+      // toast({
+      //   title: "Error",
+      //   description: "An unexpected error has occurred",
+      //   variant: "destructive",
+      // });
+      alert("An unexpected error has occurred");
 
       return {
         ...prevState,
@@ -173,7 +174,7 @@ const StartupForm = () => {
         disabled={isPending}
       >
         {isPending ? "Submitting..." : "Submit Your Pitch"}
-        <Send className="size-6 ml-2" />
+        <BsSend className="size-6 ml-2" />
       </Button>
     </form>
   );
