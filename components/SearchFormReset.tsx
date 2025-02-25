@@ -1,6 +1,6 @@
 "use client"
 
-import { X } from 'lucide-react'
+import { MdOutlineClear } from "react-icons/md";
 import Link from 'next/link'
 import React from 'react'
 
@@ -16,7 +16,7 @@ const SearchFormReset = () => {
 
     return (
         <button type='reset' onClick={reset} className='search-btn text-white'>
-            <Link href='/'><X className='size-5'/></Link>
+            <Link href='/'><MdOutlineClear className='size-5'/></Link>
         </button>
     )
 }

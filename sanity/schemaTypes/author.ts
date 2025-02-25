@@ -1,11 +1,11 @@
-import { UserIcon } from "lucide-react"
+import { CiUser } from "react-icons/ci";
 import { defineField, defineType } from "sanity"
 
 export const author = defineType({
     name: 'author',
     title: 'Authors',
     type: 'document',
-    icon: UserIcon,
+    icon: CiUser,
     fields: [
         defineField({
             name: "id",

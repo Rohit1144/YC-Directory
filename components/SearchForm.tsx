@@ -1,7 +1,7 @@
 import React from 'react'
 import Form from 'next/form'
 import SearchFormReset from './SearchFormReset'
-import { SearchIcon } from 'lucide-react'
+import { IoSearchOutline } from "react-icons/io5";
 
 const SearchForm = ({query} : {query?: string}) => {
 
@@ -17,7 +17,7 @@ const SearchForm = ({query} : {query?: string}) => {
             {query && (<SearchFormReset />)}
 
             {!query && <button type="submit" className='search-btn text-white'>
-                <SearchIcon className='size-5'/>
+                <IoSearchOutline className='size-5'/>
             </button>}
         </div>
 
